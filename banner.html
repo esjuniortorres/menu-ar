@@ -1,1 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carrusel de Imágenes</title>
+    <style>
+        body {
+            margin: 0;
+            overflow-x: hidden;
+        }
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 100vh; /* Ocupa toda la pantalla */
+            overflow: hidden;
+        }
+        .carousel-images {
+            display: flex;
+            width: 300%; /* 100% por cada imagen */
+            height: 100%;
+            transition: transform 0.5s ease-in-out;
+        }
+        .carousel-images img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+            z-index: 10;
+        }
+        .carousel-controls button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        .carousel-controls button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+    </style>
+</head>
+<body>
+    <div class="carousel">
+        <div class="carousel-images" id="carouselImages">
+            <img src="https://via.placeholder.com/1920x1080/FF0000/FFFFFF?text=Imagen+1" alt="Imagen 1">
+            <img src="https://via.placeholder.com/1920x1080/00FF00/FFFFFF?text=Imagen+2" alt="Imagen 2">
+            <img src="https://via.placeholder.com/1920x1080/0000FF/FFFFFF?text=Imagen+3" alt="Imagen 3">
+        </div>
+        <div class="carousel-controls">
+            <button id="prev">⟨</button>
+            <button id="next">⟩</button>
+        </div>
+    </div>
+
+    <script>
+        const carouselImages = document.getElementById('carouselImages');
+        const totalImages = 3; // Número de imágenes
+        let currentIndex = 0;
+
+        document.getElementById('next').addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % totalImages; // Cicla al siguiente
+            updateCarousel();
+        });
+
+        document.getElementById('prev').addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages; // Cicla al anterior
+            updateCarousel();
+        });
+
+        function updateCarousel() {
+            const offset = -currentIndex * 100; // Calcula el desplazamiento
+            carouselImages.style.transform = `translateX(${offset}%)`;
+        }
+    </script>
+</body>
+</html>
 
