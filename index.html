@@ -65,6 +65,29 @@
             text-decoration: none;
         }
     </style>
+    <style>
+        .social-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* Espacio entre botones */
+            margin: 20px 0;
+        }
+        .social-buttons a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            color: white;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .social-buttons a.facebook { background-color: #3b5998; }
+        .social-buttons a.instagram { background-color: #E1306C; }
+        .social-buttons a.twitter { background-color: #1DA1F2; }
+        .social-buttons a:hover { opacity: 0.8; }
+    </style>
 </head>
 <body>
     
@@ -97,6 +120,11 @@
         <p>¿Te encantó nuestro menú?<br>¡Reserva ahora!</p>
         <p><img src="https://img.icons8.com/?size=100&id=QkXeKixybttw&format=png&color=000000" alt="Descripción del ícono o imagen"></p>
         <p><a href="https://wa.me/+584149104679" target="_blank">Enviar mensaje por WhatsApp</a></p>
+    </div>
+    <div class="social-buttons">
+        <a href="https://facebook.com" target="_blank" class="facebook" title="Facebook">F</a>
+        <a href="https://instagram.com" target="_blank" class="instagram" title="Instagram">I</a>
+        <a href="https://twitter.com" target="_blank" class="twitter" title="Twitter">T</a>
     </div>
 
     <script>
