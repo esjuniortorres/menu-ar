@@ -3,149 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrusel con Indicadores y Autoplay</title>
+    <title>Banner con Texto</title>
     <style>
         body {
             margin: 0;
-            overflow-x: hidden;
+            font-family: Arial, sans-serif;
         }
-        .carousel {
+        .banner {
             position: relative;
             width: 100%;
-            height: 40vh; /* Ocupa toda la pantalla */
-            overflow: hidden;
+            height: 100vh; /* Ocupa toda la pantalla */
+            background: url('https://cdn.pixabay.com/photo/2022/06/07/20/52/curry-7249247_960_720.jpg') no-repeat center center/cover;
         }
-        .carousel-images {
-            display: flex;
-            width: 300%; /* 100% por cada imagen */
-            height: 100%;
-            transition: transform 0.5s ease-in-out;
-        }
-        .carousel-images img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .carousel-controls {
+        .banner-text {
             position: absolute;
             top: 50%;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: space-between;
-            transform: translateY(-50%);
-            z-index: 10;
-        }
-        .carousel-controls button {
-            background-color: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            font-size: 18px;
-        }
-        .carousel-controls button:hover {
-            background-color: rgba(0, 0, 0, 0.8);
-        }
-        .carousel-indicators {
-            position: absolute;
-            bottom: 20px;
             left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 10px;
-            z-index: 10;
-        }
-        .carousel-indicators button {
-            width: 12px;
-            height: 12px;
-            border: none;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-        }
-        .carousel-indicators button.active {
-            background-color: rgba(255, 255, 255, 1);
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro translúcido */
+            padding: 20px;
+            border-radius: 8px;
         }
     </style>
 </head>
 <body>
-    <div class="carousel">
-        <div class="carousel-images" id="carouselImages">
-            <img src="https://cdn.pixabay.com/photo/2022/06/07/20/52/curry-7249247_960_720.jpg?text=Imagen+1" alt="Imagen 1">
-            <img src="https://cdn.pixabay.com/photo/2023/11/09/15/04/tomato-8377608_1280.jpg?text=Imagen+2" alt="Imagen 2">
-            <img src="https://cdn.pixabay.com/photo/2024/04/01/05/18/green-8667981_1280.jpg?text=Imagen+3" alt="Imagen 3">
-                </div>
-        <div class="carousel-controls">
-            <button id="prev">⟨</button>
-            <button id="next">⟩</button>
-        </div>
-        <div class="carousel-indicators" id="carouselIndicators">
-            <button data-index="0" class="active"></button>
-            <button data-index="1"></button>
-            <button data-index="2"></button>
+    <div class="banner">
+        <div class="banner-text">
+            <h1>Bienvenidos a Nuestro Restaurante</h1>
+            <p>Disfruta de la mejor experiencia gastronómica</p>
         </div>
     </div>
-
-    <script>
-        const carouselImages = document.getElementById('carouselImages');
-        const indicators = document.querySelectorAll('#carouselIndicators button');
-        const totalImages = indicators.length;
-        let currentIndex = 0;
-        let autoplayInterval;
-
-        // Función para actualizar el carrusel
-        function updateCarousel() {
-            const offset = -currentIndex * 100;
-            carouselImages.style.transform = `translateX(${offset}%)`;
-
-            // Actualizar indicadores
-            indicators.forEach((indicator, index) => {
-                indicator.classList.toggle('active', index === currentIndex);
-            });
-        }
-
-        // Función para avanzar automáticamente
-        function startAutoplay() {
-            autoplayInterval = setInterval(() => {
-                currentIndex = (currentIndex + 1) % totalImages;
-                updateCarousel();
-            }, 3000); // Cambia cada 3 segundos
-        }
-
-        // Función para detener autoplay
-        function stopAutoplay() {
-            clearInterval(autoplayInterval);
-        }
-
-        // Eventos para botones de navegación
-        document.getElementById('next').addEventListener('click', () => {
-            stopAutoplay();
-            currentIndex = (currentIndex + 1) % totalImages;
-            updateCarousel();
-            startAutoplay();
-        });
-
-        document.getElementById('prev').addEventListener('click', () => {
-            stopAutoplay();
-            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-            updateCarousel();
-            startAutoplay();
-        });
-
-        // Eventos para indicadores
-        indicators.forEach(indicator => {
-            indicator.addEventListener('click', (e) => {
-                stopAutoplay();
-                currentIndex = parseInt(e.target.getAttribute('data-index'));
-                updateCarousel();
-                startAutoplay();
-            });
-        });
-
-        // Iniciar autoplay
-        startAutoplay();
-    </script>
 </body>
 </html>
-           
