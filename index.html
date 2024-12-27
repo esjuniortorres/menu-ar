@@ -66,7 +66,24 @@
         }
     </style>
     <style>
-        .sociales {
+        .banner {
+            position: relative;
+            width: 100%;
+            height: 300px; /* Ocupa toda la pantalla */
+            background: url('https://cdn.pixabay.com/photo/2022/06/07/20/52/curry-7249247_960_720.jpg') no-repeat center center/cover;
+        }
+        .banner-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro translúcido */
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+            .sociales {
             display: flex;
             justify-content: center;
             gap: 15px; /* Espacio entre botones */
