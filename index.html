@@ -15,6 +15,23 @@
             margin: 0;
             padding: 0;
         }
+           .banner1 {
+            position: relative;
+            width: 100%;
+            height: 300px; /* Ocupa toda la pantalla */
+            background: url('https://cdn.pixabay.com/photo/2022/06/07/20/52/curry-7249247_960_720.jpg') no-repeat center center/cover;
+        }
+        .banner-text1 {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro translúcido */
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
         h1 {
             background-color: #aeb6bf;
             color: white;
@@ -66,24 +83,7 @@
         }
     </style>
     <style>
-        .banner {
-            position: relative;
-            width: 100%;
-            height: 300px; /* Ocupa toda la pantalla */
-            background: url('https://cdn.pixabay.com/photo/2022/06/07/20/52/curry-7249247_960_720.jpg') no-repeat center center/cover;
-        }
-        .banner-text {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            text-align: center;
-            background-color: rgba(0, 0, 0, 0.5); /* Fondo oscuro translúcido */
-            padding: 10px 20px;
-            border-radius: 8px;
-        }
-            .sociales {
+     .sociales {
             display: flex;
             justify-content: center;
             gap: 15px; /* Espacio entre botones */
@@ -92,8 +92,8 @@
         </style>
        </head>
 <body>
-      <div class="banner">
-        <div class="banner-text">
+      <div class="banner1">
+        <div class="banner-text1">
             <h1>Bienvenidos a Nuestro Restaurante</h1>
             <p>Disfruta de la mejor experiencia gastronómica</p>
         </div>
