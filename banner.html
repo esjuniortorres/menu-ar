@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrusel de Imágenes</title>
+    <title>Carrusel con Indicadores y Autoplay</title>
     <style>
         body {
             margin: 0;
@@ -47,6 +47,26 @@
         .carousel-controls button:hover {
             background-color: rgba(0, 0, 0, 0.8);
         }
+        .carousel-indicators {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+            z-index: 10;
+        }
+        .carousel-indicators button {
+            width: 12px;
+            height: 12px;
+            border: none;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+        }
+        .carousel-indicators button.active {
+            background-color: rgba(255, 255, 255, 1);
+        }
     </style>
 </head>
 <body>
@@ -60,28 +80,71 @@
             <button id="prev">⟨</button>
             <button id="next">⟩</button>
         </div>
+        <div class="carousel-indicators" id="carouselIndicators">
+            <button data-index="0" class="active"></button>
+            <button data-index="1"></button>
+            <button data-index="2"></button>
+        </div>
     </div>
 
     <script>
         const carouselImages = document.getElementById('carouselImages');
-        const totalImages = 3; // Número de imágenes
+        const indicators = document.querySelectorAll('#carouselIndicators button');
+        const totalImages = indicators.length;
         let currentIndex = 0;
+        let autoplayInterval;
 
+        // Función para actualizar el carrusel
+        function updateCarousel() {
+            const offset = -currentIndex * 100;
+            carouselImages.style.transform = `translateX(${offset}%)`;
+
+            // Actualizar indicadores
+            indicators.forEach((indicator, index) => {
+                indicator.classList.toggle('active', index === currentIndex);
+            });
+        }
+
+        // Función para avanzar automáticamente
+        function startAutoplay() {
+            autoplayInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % totalImages;
+                updateCarousel();
+            }, 3000); // Cambia cada 3 segundos
+        }
+
+        // Función para detener autoplay
+        function stopAutoplay() {
+            clearInterval(autoplayInterval);
+        }
+
+        // Eventos para botones de navegación
         document.getElementById('next').addEventListener('click', () => {
-            currentIndex = (currentIndex + 1) % totalImages; // Cicla al siguiente
+            stopAutoplay();
+            currentIndex = (currentIndex + 1) % totalImages;
             updateCarousel();
+            startAutoplay();
         });
 
         document.getElementById('prev').addEventListener('click', () => {
-            currentIndex = (currentIndex - 1 + totalImages) % totalImages; // Cicla al anterior
+            stopAutoplay();
+            currentIndex = (currentIndex - 1 + totalImages) % totalImages;
             updateCarousel();
+            startAutoplay();
         });
 
-        function updateCarousel() {
-            const offset = -currentIndex * 100; // Calcula el desplazamiento
-            carouselImages.style.transform = `translateX(${offset}%)`;
-        }
+        // Eventos para indicadores
+        indicators.forEach(indicator => {
+            indicator.addEventListener('click', (e) => {
+                stopAutoplay();
+                currentIndex = parseInt(e.target.getAttribute('data-index'));
+                updateCarousel();
+                startAutoplay();
+            });
+        });
+
+        // Iniciar autoplay
+        startAutoplay();
     </script>
 </body>
 </html>
-
