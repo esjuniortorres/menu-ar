@@ -4,7 +4,7 @@ const responses = {
     Menu: "Aquí está nuestro menú. ¿Qué te gustaría ver? Comida, Bebidas o Postres.",
     Ubicacion: "Estamos ubicados en Avenida Principal, 123.",
     Horario: "Nuestro horario es de lunes a domingo, de 9 AM a 10 PM.",
-    Ayuda: "Puedo ayudarte con información sobre el menú, ubicación y horario. ¿Cómo te puedo asistir?"
+    ayuda: "Puedo ayudarte con información sobre el menú, ubicación y horario. ¿Cómo te puedo asistir?"
 };
 
 // Mostrar la respuesta del bot y los botones interactivos
