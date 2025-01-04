@@ -110,23 +110,53 @@
             margin: 20px 0;
         }
         </style>
+    <style>
+        #chatbot {
+    width: 300px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    background: #f9f9f9;
+    font-family: 'Poppins', sans-serif;
+} /*chatbot inica*/
+#chat-history {
+    height: 200px;
+    overflow-y: auto;
+    background: #fff;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+#user-input {
+    width: calc(100% - 60px);
+    padding: 5px;
+}
+#send-btn {
+    width: 50px;
+    background: #E07A5F;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}/*termina chatbot*/
+    </style>
        </head>
 <body>
+    <!-- Titulo 1 -->
       <div class="banner1">
         <div class="banner-text1">
             <h1 class="titulo1">Bienvenidos a Nuestro Restaurante</h1>
             <p>Disfruta de la mejor experiencia gastronómica</p>
         </div>
     </div>
-       <center><div class="logo"> <!-- Logo del restaurante -->
+    <!-- Logo del restaurante -->
+       <center><div class="logo"> 
         <img src="logo2.png" alt="Logo Grill style="display: block; margin: 0 auto;">
     </div></center>
-    
+    <!-- Titulo 2 -->
     <center><h1 class="titulo2">Menú Interactivo</br>Restaurante Grill</h1></center>
 
-   <center><div class="menu">
-        <!-- Botones para seleccionar platos -->
-        <button onclick="mostrarModelo('platoensalada.glb')">Entrada - Parrilla para Dos Personas</button>
+   <!--centra el menu--><center> <!-- Botones para seleccionar platos -->
+       <div class="menu">
+       <button onclick="mostrarModelo('platoensalada.glb')">Entrada - Parrilla para Dos Personas</button>
         <button onclick="mostrarModelo('20_12_2024.glb')">Plato Fuerte - HAMBURGUESAS</button>
         <button onclick="mostrarModelo('19_12_2024.glb')">Postre - HELADO</button>
 
@@ -139,15 +169,21 @@
                       ar>
         </model-viewer>
     </div>
-   </br>
-       <p>Presiona el icono <img src="icono.png" style="width:25px; height:25px;"> para mejorar la Experiencia</p></center> 
-
+       <p>Presiona el icono <img src="icono.png" style="width:25px; height:25px;"> para mejorar la Experiencia</p>
+   </center> <!--termina de centrar el menu-->
+ <!-- Sección de Chatbot -->
+    <div id="chatbot">
+    <div id="chat-history"></div>
+    <input type="text" id="user-input" placeholder="Escribe algo..." />
+    <button id="send-btn">Enviar</button>
+    </div>
     <!-- Sección de contacto -->
     <div class="contact">
         <p>¿Te encantó nuestro menú?<br>¡Reserva ahora!</p>
         <p><img src="https://img.icons8.com/?size=100&id=QkXeKixybttw&format=png&color=000000" alt="Descripción del ícono o imagen"></p>
         <p><a href="https://wa.me/+584149104679" target="_blank">Enviar mensaje por WhatsApp</a></p>
     </div>
+    <!-- Sección de Redes Sociales -->
     <div class="sociales">
         <a href="https://facebook.com" target="_blank"  title="Facebook"><img src="https://img.icons8.com/?size=100&id=yGcWL8copNNQ&format=png&color=000000" alt="Descripción del ícono o imagen" style="width:60px; height:60px;"></a>
         <a href="https://instagram.com" target="_blank" title="Instagram"><img src="https://img.icons8.com/?size=100&id=Xy10Jcu1L2Su&format=png&color=000000" alt="Descripción del ícono o imagen" style="width:60px; height:60px;"></a>
@@ -158,6 +194,34 @@
         function mostrarModelo(url) {
             document.getElementById('visor').setAttribute('src', url);
         }
+    </script>
+     <script>
+        // JavaScript chatbot
+        const responses = {
+            "pollo": "Te recomiendo nuestro pollo a la brasa. ¡Es delicioso!",
+            "carne": "La parrilla mixta es nuestra especialidad. ¿Te gustaría probarla?",
+            "pasta": "Nuestra pasta al pesto es muy popular. ¿Qué opinas?",
+            "hola": "¡Hola! ¿En qué te puedo ayudar hoy?",
+            "default": "Lo siento, no entendí eso. ¿Puedes intentarlo de nuevo?"
+        };
+
+        document.getElementById('send-btn').addEventListener('click', () => {
+            const userInput = document.getElementById('user-input').value.toLowerCase();
+            const chatHistory = document.getElementById('chat-history');
+
+            // Mostrar el mensaje del usuario
+            chatHistory.innerHTML += `<p><strong>Tú:</strong> ${userInput}</p>`;
+
+            // Obtener respuesta
+            const response = responses[userInput] || responses['default'];
+            chatHistory.innerHTML += `<p><strong>Bot:</strong> ${response}</p>`;
+
+            // Limpiar el input
+            document.getElementById('user-input').value = "";
+
+            // Scroll automático hacia abajo
+            chatHistory.scrollTop = chatHistory.scrollHeight;
+        });
     </script>
 </body>
 </html>
