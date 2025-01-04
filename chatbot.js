@@ -6,7 +6,6 @@
             "hola": "¡Hola! ¿En qué te puedo ayudar hoy?",
             "default": "Lo siento, no entendí eso. ¿Puedes intentarlo de nuevo?"
         };
-
         document.getElementById('send-btn').addEventListener('click', () => {
             const userInput = document.getElementById('user-input').value.toLowerCase();
             const chatHistory = document.getElementById('chat-history');
