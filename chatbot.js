@@ -17,11 +17,11 @@ function showResponse(userMessage) {
 
     if (userMessage.includes("hola") || userMessage.includes("hi") || userMessage.includes("buenos días")) {
         responseMessage = responses.saludo;
-        buttons = ["Menú", "Ubicación", "Horario"];
-    } else if (userMessage.includes("menú")) {
+        buttons = ["Menu", "Ubicacion", "Horario"];
+    } else if (userMessage.includes("menu")) {
         responseMessage = responses.menu;
         buttons = ["Comida", "Bebidas", "Postres"];
-    } else if (userMessage.includes("ubicación")) {
+    } else if (userMessage.includes("ubicacion")) {
         responseMessage = responses.ubicacion;
         buttons = ["Ver mapa", "Cómo llegar"];
     } else if (userMessage.includes("horario")) {
