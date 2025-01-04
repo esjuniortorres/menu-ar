@@ -1,25 +1,43 @@
- const responses = {
-            "pollo": "Te recomiendo nuestro pollo a la brasa. ¡Es delicioso!",
-            "carne": "La parrilla mixta es nuestra especialidad. ¿Te gustaría probarla?",
-            "pasta": "Nuestra pasta al pesto es muy popular. ¿Qué opinas?",
-            "hola": "¡Hola! ¿En qué te puedo ayudar hoy?",
-            "default": "Lo siento, no entendí eso. ¿Puedes intentarlo de nuevo?"
-        };
+// Token de acceso de Wit.ai
+const WIT_API_TOKEN = "UNV6QFWEWENONOVTPU4RHWXGKOJZZM2F";
 
-        document.getElementById('send-btn').addEventListener('click', () => {
-            const userInput = document.getElementById('user-input').value.toLowerCase();
-            const chatHistory = document.getElementById('chat-history');
+// Función para enviar el mensaje a Wit.ai y obtener la respuesta
+async function getWitResponse(userMessage) {
+    const apiUrl = `https://api.wit.ai/message?v=20230101&q=${encodeURIComponent(userMessage)}`;
 
-            // Mostrar el mensaje del usuario
-            chatHistory.innerHTML += `<p><strong>Tú:</strong> ${userInput}</p>`;
-
-            // Obtener respuesta
-            const response = responses[userInput] || responses['default'];
-            chatHistory.innerHTML += `<p><strong>Bot:</strong> ${response}</p>`;
-
-            // Limpiar el input
-            document.getElementById('user-input').value = "";
-
-            // Scroll automático hacia abajo
-            chatHistory.scrollTop = chatHistory.scrollHeight;
+    try {
+        const response = await axios.get(apiUrl, {
+            headers: {
+                Authorization: `Bearer ${WIT_API_TOKEN}`,
+            },
         });
+
+        const entities = response.data.entities || {};
+        const intent = response.data.intents[0]?.name || "default";
+
+        // Procesar respuesta según el intent
+        switch (intent) {
+            case "menu":
+                return "Aquí está nuestro menú: [enlace al menú]";
+            case "ubicacion":
+                return "Estamos ubicados en Avenida Principal, 123.";
+            case "horario":
+                return "Nuestro horario es de lunes a domingo, 9:00 AM a 10:00 PM.";
+            default:
+                return "Lo siento, no entendí eso. ¿Puedes reformular tu pregunta?";
+        }
+    } catch (error) {
+        console.error("Error al conectarse con Wit.ai:", error);
+        return "Hubo un problema al procesar tu solicitud. Intenta de nuevo más tarde.";
+    }
+}
+
+// Función para manejar el input del usuario
+async function handleUserInput(input) {
+    const response = await getWitResponse(input);
+    console.log("Bot:", response);
+    return response;
+}
+
+// Ejemplo de uso
+handleUserInput("¿Dónde están ubicados?").then(console.log);
