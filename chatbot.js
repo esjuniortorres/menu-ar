@@ -1,19 +1,13 @@
-// Respuestas predefinidas del bot
+// Respuestas predefinidas del chatbot
 const responses = {
-    saludo: "¡Hola! ¿En qué puedo ayudarte?",
-    menu: "Aquí está nuestro menú: Pizza, Hamburguesa, Pasta.",
-    ubicacion: "Estamos ubicados en la calle principal, cerca del parque central.",
-    horario: "Nuestro horario es de lunes a viernes de 10 AM a 6 PM.",
-    ayuda: "Por favor, selecciona una de las opciones: Menú, Ubicación, Horario.",
-    menuComida: "Aquí están nuestras opciones de comida: Pizza, Hamburguesa, Pasta.",
-    pizzaDetalles: "Tenemos pizza de pepperoni, margarita y vegetariana. Precios: $10 - $15.",
-    menuBebidas: "Ofrecemos refrescos, jugos naturales y agua. Precios: $2 - $5.",
-    menuPostres: "Tenemos helado, torta de chocolate y flan. Precios: $3 - $6.",
-    mapa: "Puedes ver nuestro mapa en el siguiente enlace: [enlace].",
-    horarioCompleto: "Nuestro horario completo es de lunes a viernes de 10 AM a 6 PM, sábados de 12 PM a 4 PM.",
+    saludo: "¡Hola! ¿En qué puedo ayudarte hoy?",
+    menu: "Aquí está nuestro menú. ¿Qué te gustaría ver? Comida, Bebidas o Postres.",
+    ubicacion: "Estamos ubicados en Avenida Principal, 123.",
+    horario: "Nuestro horario es de lunes a domingo, de 9 AM a 10 PM.",
+    ayuda: "Puedo ayudarte con información sobre el menú, ubicación y horario. ¿Cómo te puedo asistir?"
 };
 
-// Función para mostrar la respuesta del bot y los botones
+// Mostrar la respuesta del bot y los botones interactivos
 function showResponse(userMessage) {
     const chatHistory = document.getElementById("chat-history");
     chatHistory.innerHTML += `<div class="message user-message">${userMessage}</div>`; // Mostrar mensaje del usuario
@@ -21,7 +15,6 @@ function showResponse(userMessage) {
     let responseMessage = "Lo siento, no entendí eso."; // Respuesta predeterminada
     let buttons = []; // Opciones de botones
 
-    // Verificar si el mensaje del usuario es uno de los saludos esperados
     if (userMessage.includes("hola") || userMessage.includes("hi") || userMessage.includes("buenos días")) {
         responseMessage = responses.saludo;
         buttons = ["Menú", "Ubicación", "Horario"];
@@ -39,8 +32,7 @@ function showResponse(userMessage) {
         buttons = ["Menú", "Ubicación", "Horario"];
     }
 
-    // Mostrar la respuesta del bot
-    chatHistory.innerHTML += `<div class="message bot-response">${responseMessage}</div>`;
+    chatHistory.innerHTML += `<div class="message bot-response">${responseMessage}</div>`; // Mostrar respuesta del bot
 
     // Crear botones interactivos
     const buttonsContainer = document.createElement("div");
@@ -52,62 +44,11 @@ function showResponse(userMessage) {
 
         // Añadir evento al hacer clic en los botones
         button.addEventListener("click", () => {
-            loadButtonResponse(option); // Llamar a la función para cargar la respuesta al presionar el botón
+            showResponse(option); // Responder según opción seleccionada
         });
     });
 
     chatHistory.appendChild(buttonsContainer);
-    chatHistory.scrollTop = chatHistory.scrollHeight; // Desplazarse al final del chat
-}
-
-// Función para cargar la respuesta de cada opción cuando se presiona un botón
-function loadButtonResponse(option) {
-    const chatHistory = document.getElementById("chat-history");
-
-    // Mostrar la respuesta correspondiente según el botón que se presionó
-    let responseMessage = "";
-    let buttons = [];
-
-    // Verificar la opción seleccionada y asignar las respuestas correspondientes
-    if (option === "Comida") {
-        responseMessage = responses.menuComida;
-        buttons = ["Pizza", "Hamburguesa", "Pasta"];
-    } else if (option === "Pizza") {
-        responseMessage = responses.pizzaDetalles;
-        buttons = []; // No más botones, mostrar detalles
-    } else if (option === "Bebidas") {
-        responseMessage = responses.menuBebidas;
-    } else if (option === "Postres") {
-        responseMessage = responses.menuPostres;
-    } else if (option === "Ver mapa") {
-        responseMessage = responses.mapa;
-    } else if (option === "Ver horario completo") {
-        responseMessage = responses.horarioCompleto;
-    } else if (option === "Preguntar sobre días festivos") {
-        responseMessage = "Estamos cerrados solo los domingos y días festivos oficiales.";
-    } else {
-        responseMessage = "Opción no válida.";
-    }
-
-    // Mostrar la nueva respuesta
-    chatHistory.innerHTML += `<div class="message bot-response">${responseMessage}</div>`;
-    
-    // Si se presionó un botón como "Pizza", muestra más detalles o botones adicionales
-    if (buttons.length > 0) {
-        const buttonsContainer = document.createElement("div");
-        buttons.forEach(option => {
-            const button = document.createElement("button");
-            button.innerText = option;
-            button.classList.add("response-button");
-            buttonsContainer.appendChild(button);
-
-            button.addEventListener("click", () => {
-                loadButtonResponse(option);
-            });
-        });
-        chatHistory.appendChild(buttonsContainer);
-    }
-
     chatHistory.scrollTop = chatHistory.scrollHeight; // Desplazarse al final del chat
 }
 
