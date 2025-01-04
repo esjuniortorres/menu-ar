@@ -1,16 +1,16 @@
 // Respuestas predefinidas del chatbot
 const responses = {
-    saludo: "¡Hola! ¿En qué puedo ayudarte hoy?",
-    menu: "Aquí está nuestro menú. ¿Qué te gustaría ver? Comida, Bebidas o Postres.",
-    ubicacion: "Estamos ubicados en Avenida Principal, 123.",
-    horario: "Nuestro horario es de lunes a domingo, de 9 AM a 10 PM.",
-    ayuda: "Puedo ayudarte con información sobre el menú, ubicación y horario. ¿Cómo te puedo asistir?"
+    Saludo: "¡Hola! ¿En qué puedo ayudarte hoy?",
+    Menu: "Aquí está nuestro menú. ¿Qué te gustaría ver? Comida, Bebidas o Postres.",
+    Ubicacion: "Estamos ubicados en Avenida Principal, 123.",
+    Horario: "Nuestro horario es de lunes a domingo, de 9 AM a 10 PM.",
+    Ayuda: "Puedo ayudarte con información sobre el menú, ubicación y horario. ¿Cómo te puedo asistir?"
 };
 
 // Mostrar la respuesta del bot y los botones interactivos
 function showResponse(userMessage) {
     const chatHistory = document.getElementById("chat-history");
-    chatHistory.innerHTML += `<div class="message user-message">${userMessage}</div>`; // Mostrar mensaje del usuario
+    chatHistory.innerHTML += '<div class="message user-message">${userMessage}</div>'; // Mostrar mensaje del usuario
     
     let responseMessage = "Lo siento, no entendí eso."; // Respuesta predeterminada
     let buttons = []; // Opciones de botones
@@ -18,21 +18,21 @@ function showResponse(userMessage) {
     if (userMessage.includes("hola") || userMessage.includes("hi") || userMessage.includes("buenos días")) {
         responseMessage = responses.saludo;
         buttons = ["Menu", "Ubicacion", "Horario"];
-    } else if (userMessage.includes("menu")) {
-        responseMessage = responses.menu;
+    } else if (userMessage.includes("Menu")) {
+        responseMessage = responses.Menu;
         buttons = ["Comida", "Bebidas", "Postres"];
-    } else if (userMessage.includes("ubicacion")) {
-        responseMessage = responses.ubicacion;
+    } else if (userMessage.includes("Ubicacion")) {
+        responseMessage = responses.Ubicacion;
         buttons = ["Ver mapa", "Cómo llegar"];
-    } else if (userMessage.includes("horario")) {
-        responseMessage = responses.horario;
+    } else if (userMessage.includes("Horario")) {
+        responseMessage = responses.Horario;
         buttons = ["Ver horario completo", "Preguntar sobre días festivos"];
     } else {
         responseMessage = responses.ayuda;
         buttons = ["Menu", "Ubicacion", "Horario"];
     }
 
-    chatHistory.innerHTML += `<div class="message bot-response">${responseMessage}</div>`; // Mostrar respuesta del bot
+    chatHistory.innerHTML += '<div class="message bot-response">${responseMessage}</div>'; // Mostrar respuesta del bot
 
     // Crear botones interactivos
     const buttonsContainer = document.createElement("div");
