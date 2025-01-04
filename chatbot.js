@@ -1,20 +1,19 @@
-// Respuestas predefinidas del chatbot
+// Respuestas predefinidas del bot
 const responses = {
-    saludo: "¡Hola! ¿En qué puedo ayudarte hoy?",
-    menu: "Aquí está nuestro menú. ¿Qué te gustaría ver? Comida, Bebidas o Postres.",
-    ubicacion: "Estamos ubicados en Avenida Principal, 123.",
-    horario: "Nuestro horario es de lunes a domingo, de 9 AM a 10 PM.",
-    ayuda: "Puedo ayudarte con información sobre el menú, ubicación y horario. ¿Cómo te puedo asistir?",
-
-    // Información detallada para opciones del menú
-    menuComida: "Nuestro menú de comida incluye: 🍕 Pizza, 🍔 Hamburguesas, 🍝 Pasta.",
-    pizzaDetalles: "Tenemos los siguientes sabores de pizza: \n1. 🍕 Margarita - $8 \n2. 🍕 Peperoni - $10 \n3. 🍕 Hawaiana - $9",
-    menuBebidas: "Las bebidas disponibles son: 🥤 Jugos, 🍻 Cerveza, ☕ Café.",
-    menuPostres: "Postres disponibles: 🍰 Pastel de chocolate, 🍮 Flan, 🍨 Helado.",
-    mapa: "Aquí está el mapa para que llegues a nuestra ubicación. [Enlace al mapa].",
-    horarioCompleto: "El horario es de lunes a domingo, 9 AM - 10 PM. Los días festivos abrimos a las 12 PM."
+    saludo: "¡Hola! ¿En qué puedo ayudarte?",
+    menu: "Aquí está nuestro menú: Pizza, Hamburguesa, Pasta.",
+    ubicacion: "Estamos ubicados en la calle principal, cerca del parque central.",
+    horario: "Nuestro horario es de lunes a viernes de 10 AM a 6 PM.",
+    ayuda: "Por favor, selecciona una de las opciones: Menú, Ubicación, Horario.",
+    menuComida: "Aquí están nuestras opciones de comida: Pizza, Hamburguesa, Pasta.",
+    pizzaDetalles: "Tenemos pizza de pepperoni, margarita y vegetariana. Precios: $10 - $15.",
+    menuBebidas: "Ofrecemos refrescos, jugos naturales y agua. Precios: $2 - $5.",
+    menuPostres: "Tenemos helado, torta de chocolate y flan. Precios: $3 - $6.",
+    mapa: "Puedes ver nuestro mapa en el siguiente enlace: [enlace].",
+    horarioCompleto: "Nuestro horario completo es de lunes a viernes de 10 AM a 6 PM, sábados de 12 PM a 4 PM.",
 };
-// Mostrar la respuesta del bot y los botones interactivos
+
+// Función para mostrar la respuesta del bot y los botones
 function showResponse(userMessage) {
     const chatHistory = document.getElementById("chat-history");
     chatHistory.innerHTML += `<div class="message user-message">${userMessage}</div>`; // Mostrar mensaje del usuario
@@ -22,7 +21,7 @@ function showResponse(userMessage) {
     let responseMessage = "Lo siento, no entendí eso."; // Respuesta predeterminada
     let buttons = []; // Opciones de botones
 
-    // Aquí manejamos las respuestas iniciales 
+    // Verificar si el mensaje del usuario es uno de los saludos esperados
     if (userMessage.includes("hola") || userMessage.includes("hi") || userMessage.includes("buenos días")) {
         responseMessage = responses.saludo;
         buttons = ["Menú", "Ubicación", "Horario"];
@@ -40,7 +39,8 @@ function showResponse(userMessage) {
         buttons = ["Menú", "Ubicación", "Horario"];
     }
 
-    chatHistory.innerHTML += `<div class="message bot-response">${responseMessage}</div>`; // Mostrar respuesta del bot
+    // Mostrar la respuesta del bot
+    chatHistory.innerHTML += `<div class="message bot-response">${responseMessage}</div>`;
 
     // Crear botones interactivos
     const buttonsContainer = document.createElement("div");
@@ -60,7 +60,7 @@ function showResponse(userMessage) {
     chatHistory.scrollTop = chatHistory.scrollHeight; // Desplazarse al final del chat
 }
 
-// Función que carga la respuesta cuando se presiona un botón
+// Función para cargar la respuesta de cada opción cuando se presiona un botón
 function loadButtonResponse(option) {
     const chatHistory = document.getElementById("chat-history");
 
@@ -68,12 +68,13 @@ function loadButtonResponse(option) {
     let responseMessage = "";
     let buttons = [];
 
+    // Verificar la opción seleccionada y asignar las respuestas correspondientes
     if (option === "Comida") {
         responseMessage = responses.menuComida;
         buttons = ["Pizza", "Hamburguesa", "Pasta"];
     } else if (option === "Pizza") {
         responseMessage = responses.pizzaDetalles;
-        buttons = []; // No se necesita más botones si se muestra el detalle
+        buttons = []; // No más botones, mostrar detalles
     } else if (option === "Bebidas") {
         responseMessage = responses.menuBebidas;
     } else if (option === "Postres") {
@@ -82,6 +83,8 @@ function loadButtonResponse(option) {
         responseMessage = responses.mapa;
     } else if (option === "Ver horario completo") {
         responseMessage = responses.horarioCompleto;
+    } else if (option === "Preguntar sobre días festivos") {
+        responseMessage = "Estamos cerrados solo los domingos y días festivos oficiales.";
     } else {
         responseMessage = "Opción no válida.";
     }
@@ -116,3 +119,8 @@ document.getElementById("send-btn").addEventListener("click", () => {
         document.getElementById("user-input").value = ""; // Limpiar campo de entrada
     }
 });
+
+// Mostrar la respuesta de saludo y botones iniciales cuando se cargue la página
+window.onload = function() {
+    showResponse("hola");  // Mostrar la respuesta inicial con los botones
+};
