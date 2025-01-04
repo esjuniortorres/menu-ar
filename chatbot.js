@@ -10,7 +10,7 @@ const responses = {
 // Mostrar la respuesta del bot y los botones interactivos
 function showResponse(userMessage) {
     const chatHistory = document.getElementById("chat-history");
-    chatHistory.innerHTML += '<div class="message user-message">${userMessage}</div>'; // Mostrar mensaje del usuario
+    chatHistory.innerHTML += `<div class="message user-message">${userMessage}</div>`; // Mostrar mensaje del usuario
     
     let responseMessage = "Lo siento, no entendí eso."; // Respuesta predeterminada
     let buttons = []; // Opciones de botones
