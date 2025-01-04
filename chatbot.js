@@ -6,14 +6,14 @@ const responses = {
     horario: "Nuestro horario es de lunes a domingo, de 9 AM a 10 PM.",
     ayuda: "Puedo ayudarte con información sobre el menú, ubicación y horario. ¿Cómo te puedo asistir?",
 
-    // Información adicional que se muestra cuando se presiona un botón específico
-    menuComida: "Nuestro menú de comida incluye: 🍕 Pizzas, 🍔 Hamburguesas, 🍝 Pastas.",
+    // Información detallada para opciones del menú
+    menuComida: "Nuestro menú de comida incluye: 🍕 Pizza, 🍔 Hamburguesas, 🍝 Pasta.",
+    pizzaDetalles: "Tenemos los siguientes sabores de pizza: \n1. 🍕 Margarita - $8 \n2. 🍕 Peperoni - $10 \n3. 🍕 Hawaiana - $9",
     menuBebidas: "Las bebidas disponibles son: 🥤 Jugos, 🍻 Cerveza, ☕ Café.",
     menuPostres: "Postres disponibles: 🍰 Pastel de chocolate, 🍮 Flan, 🍨 Helado.",
     mapa: "Aquí está el mapa para que llegues a nuestra ubicación. [Enlace al mapa].",
     horarioCompleto: "El horario es de lunes a domingo, 9 AM - 10 PM. Los días festivos abrimos a las 12 PM."
 };
-
 // Mostrar la respuesta del bot y los botones interactivos
 function showResponse(userMessage) {
     const chatHistory = document.getElementById("chat-history");
@@ -69,6 +69,10 @@ function loadButtonResponse(option) {
 
     if (option === "Comida") {
         responseMessage = responses.menuComida;
+        buttons = ["Pizza", "Hamburguesa", "Pasta"];
+    } else if (option === "Pizza") {
+        responseMessage = responses.pizzaDetalles;
+        buttons = []; // No se necesita más botones si se muestra el detalle
     } else if (option === "Bebidas") {
         responseMessage = responses.menuBebidas;
     } else if (option === "Postres") {
@@ -83,6 +87,23 @@ function loadButtonResponse(option) {
 
     // Mostrar la nueva respuesta
     chatHistory.innerHTML += `<div class="message bot-response">${responseMessage}</div>`;
+    
+    // Si se presionó un botón como "Pizza", muestra más detalles o botones adicionales
+    if (buttons.length > 0) {
+        const buttonsContainer = document.createElement("div");
+        buttons.forEach(option => {
+            const button = document.createElement("button");
+            button.innerText = option;
+            button.classList.add("response-button");
+            buttonsContainer.appendChild(button);
+
+            button.addEventListener("click", () => {
+                loadButtonResponse(option);
+            });
+        });
+        chatHistory.appendChild(buttonsContainer);
+    }
+
     chatHistory.scrollTop = chatHistory.scrollHeight; // Desplazarse al final del chat
 }
 
@@ -94,4 +115,3 @@ document.getElementById("send-btn").addEventListener("click", () => {
         document.getElementById("user-input").value = ""; // Limpiar campo de entrada
     }
 });
-
