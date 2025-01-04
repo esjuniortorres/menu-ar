@@ -29,7 +29,7 @@ function showResponse(userMessage) {
         buttons = ["Ver horario completo", "Preguntar sobre días festivos"];
     } else {
         responseMessage = responses.ayuda;
-        buttons = ["Menú", "Ubicación", "Horario"];
+        buttons = ["Menu", "Ubicacion", "Horario"];
     }
 
     chatHistory.innerHTML += `<div class="message bot-response">${responseMessage}</div>`; // Mostrar respuesta del bot
