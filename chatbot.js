@@ -1,6 +1,6 @@
 // Respuestas predefinidas del chatbot
 const responses = {
-    Saludo: "¡Hola! ¿En qué puedo ayudarte hoy?",
+    saludo: "¡Hola! ¿En qué puedo ayudarte hoy?",
     Menu: "Aquí está nuestro menú. ¿Qué te gustaría ver? Comida, Bebidas o Postres.",
     Ubicacion: "Estamos ubicados en Avenida Principal, 123.",
     Horario: "Nuestro horario es de lunes a domingo, de 9 AM a 10 PM.",
