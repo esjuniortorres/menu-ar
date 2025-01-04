@@ -23,7 +23,7 @@ function showResponse(userMessage) {
     let buttons = []; // Opciones de botones
 
     // Aquí manejamos las respuestas iniciales
-    if (userMessage.includes("hola") || userMessage.includes("hi") || userMessage.includes("buenos días")) {
+    if (userMessage.includes("hola, Alejandrilovers") || userMessage.includes("hi") || userMessage.includes("buenos días")) {
         responseMessage = responses.saludo;
         buttons = ["Menú", "Ubicación", "Horario"];
     } else if (userMessage.includes("menú")) {
