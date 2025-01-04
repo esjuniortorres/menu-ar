@@ -22,7 +22,7 @@ function showResponse(userMessage) {
     let responseMessage = "Lo siento, no entendí eso."; // Respuesta predeterminada
     let buttons = []; // Opciones de botones
 
-    // Aquí manejamos las respuestas iniciales
+    // Aquí manejamos las respuestas iniciales 
     if (userMessage.includes("hola, Alejandrilovers") || userMessage.includes("hi") || userMessage.includes("buenos días")) {
         responseMessage = responses.saludo;
         buttons = ["Menú", "Ubicación", "Horario"];
