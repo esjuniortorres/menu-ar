@@ -119,8 +119,3 @@ document.getElementById("send-btn").addEventListener("click", () => {
         document.getElementById("user-input").value = ""; // Limpiar campo de entrada
     }
 });
-
-// Mostrar la respuesta de saludo y botones iniciales cuando se cargue la página
-window.onload = function() {
-    showResponse("hola");  // Mostrar la respuesta inicial con los botones
-};
