@@ -22,6 +22,7 @@ function showResponse(userMessage) {
     let responseMessage = "Lo siento, no entendí eso."; // Respuesta predeterminada
     let buttons = []; // Opciones de botones
 
+    // Aquí manejamos las respuestas iniciales
     if (userMessage.includes("hola") || userMessage.includes("hi") || userMessage.includes("buenos días")) {
         responseMessage = responses.saludo;
         buttons = ["Menú", "Ubicación", "Horario"];
@@ -115,3 +116,8 @@ document.getElementById("send-btn").addEventListener("click", () => {
         document.getElementById("user-input").value = ""; // Limpiar campo de entrada
     }
 });
+
+// Mostrar la respuesta de saludo y botones iniciales cuando se cargue la página
+window.onload = function() {
+    showResponse("hola");  // Mostrar la respuesta inicial con los botones
+};
