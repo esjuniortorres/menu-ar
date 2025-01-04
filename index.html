@@ -172,11 +172,11 @@
        <p>Presiona el icono <img src="icono.png" style="width:25px; height:25px;"> para mejorar la Experiencia</p>
    </center> <!--termina de centrar el menu-->
  <!-- Sección de Chatbot -->
-    <div id="chatbot">
+    <center></center><div id="chatbot">
     <div id="chat-history"></div>
     <input type="text" id="user-input" placeholder="Escribe algo..." />
     <button id="send-btn">Enviar</button>
-    </div>
+    </div></center>
     <!-- Sección de contacto -->
     <div class="contact">
         <p>¿Te encantó nuestro menú?<br>¡Reserva ahora!</p>
@@ -195,33 +195,6 @@
             document.getElementById('visor').setAttribute('src', url);
         }
     </script>
-     <script>
-        // JavaScript chatbot
-        const responses = {
-            "pollo": "Te recomiendo nuestro pollo a la brasa. ¡Es delicioso!",
-            "carne": "La parrilla mixta es nuestra especialidad. ¿Te gustaría probarla?",
-            "pasta": "Nuestra pasta al pesto es muy popular. ¿Qué opinas?",
-            "hola": "¡Hola! ¿En qué te puedo ayudar hoy?",
-            "default": "Lo siento, no entendí eso. ¿Puedes intentarlo de nuevo?"
-        };
-
-        document.getElementById('send-btn').addEventListener('click', () => {
-            const userInput = document.getElementById('user-input').value.toLowerCase();
-            const chatHistory = document.getElementById('chat-history');
-
-            // Mostrar el mensaje del usuario
-            chatHistory.innerHTML += `<p><strong>Tú:</strong> ${userInput}</p>`;
-
-            // Obtener respuesta
-            const response = responses[userInput] || responses['default'];
-            chatHistory.innerHTML += `<p><strong>Bot:</strong> ${response}</p>`;
-
-            // Limpiar el input
-            document.getElementById('user-input').value = "";
-
-            // Scroll automático hacia abajo
-            chatHistory.scrollTop = chatHistory.scrollHeight;
-        });
-    </script>
+     <script src="chatbot.js"></script>
 </body>
 </html>
