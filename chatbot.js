@@ -32,7 +32,7 @@ function showResponse(userMessage) {
         buttons = ["Menu", "Ubicacion", "Horario"];
     }
 
-    chatHistory.innerHTML += '<div class="message bot-response">${responseMessage}</div>'; // Mostrar respuesta del bot
+    chatHistory.innerHTML += `<div class="message bot-response">${responseMessage}</div>`; // Mostrar respuesta del bot
 
     // Crear botones interactivos
     const buttonsContainer = document.createElement("div");
