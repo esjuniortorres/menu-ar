@@ -119,5 +119,5 @@ document.getElementById("send-btn").addEventListener("click", () => {
 
 // Mostrar la respuesta de saludo y botones iniciales cuando se cargue la página
 window.onload = function() {
-    showResponse("hola");  // Mostrar la respuesta inicial con los botones
+    showResponse("");  // Mostrar la respuesta inicial con los botones
 };
