@@ -23,14 +23,29 @@ function showResponse(option) {
         responseMessage = "Opción no válida.";
     }
 
-    // Añadir la respuesta del bot al historial del chat
-    chatHistory.innerHTML += `<div class="message bot-response">${responseMessage}</div>`;
+    // Verificar si el mensaje ya existe en el historial del chat
+    const existingMessages = Array.from(chatHistory.getElementsByClassName("bot-response"));
+    const isDuplicate = existingMessages.some(msg => msg.textContent === responseMessage);
+
+    if (!isDuplicate) {
+        // Añadir la respuesta del bot al historial del chat solo si no está duplicada
+        chatHistory.innerHTML += `<div class="message bot-response">${responseMessage}</div>`;
+    }
+
+    // Volver a agregar los botones después de cada interacción
+    renderButtons(chatHistory);
+
+    // Asegurar el scroll al final del chat
     chatHistory.scrollTop = chatHistory.scrollHeight;
 }
 
-// Mostrar botones principales al cargar la página
-window.onload = function () {
-    const chatHistory = document.getElementById("chat-history");
+// Función para mostrar los botones principales
+function renderButtons(container) {
+    // Limpiar botones existentes para evitar duplicados
+    const existingButtons = container.querySelector(".buttons-container");
+    if (existingButtons) {
+        existingButtons.remove();
+    }
 
     // Crear contenedor para los botones
     const buttonsContainer = document.createElement("div");
@@ -50,5 +65,12 @@ window.onload = function () {
         });
     });
 
-    chatHistory.appendChild(buttonsContainer);
+    // Añadir los botones al contenedor principal
+    container.appendChild(buttonsContainer);
+}
+
+// Inicializar el chatbot al cargar la página
+window.onload = function () {
+    const chatHistory = document.getElementById("chat-history");
+    renderButtons(chatHistory);
 };
