@@ -1,62 +1,51 @@
-// Respuestas predefinidas del chatbot
+// Respuestas predefinidas del bot
 const responses = {
-    saludo: "¡Hola! ¿En qué puedo ayudarte hoy?",
-    Menu: "Aquí está nuestro menú. ¿Qué te gustaría ver? Comida, Bebidas o Postres.",
-    Ubicacion: "Estamos ubicados en Avenida Principal, 123.",
-    Horario: "Nuestro horario es de lunes a domingo, de 9 AM a 10 PM.",
-    ayuda: "Puedo ayudarte con información sobre el menú, ubicación y horario. ¿Cómo te puedo asistir?"
+    menu: "Haz clic aquí para ver el menú en WhatsApp: <a href='https://wa.me/1234567890?text=Hola!%20Quiero%20ver%20el%20menú' target='_blank'>WhatsApp</a> Para hacer tus pedidos directos",
+    horario: "Nuestro horario es de lunes a viernes de 10 AM a 6 PM, sábados de 12 PM a 4 PM.",
+    direccion: "Estamos ubicados en La Guaira, Caribe, Caraballeda.",
 };
 
-// Mostrar la respuesta del bot y los botones interactivos
-function showResponse(userMessage) {
+// Función para mostrar respuestas e interactuar con botones
+function showResponse(option) {
     const chatHistory = document.getElementById("chat-history");
-    chatHistory.innerHTML += `<div class="message user-message">${userMessage}</div>`; // Mostrar mensaje del usuario
-    
-    let responseMessage = "Lo siento, no entendí eso."; // Respuesta predeterminada
-    let buttons = []; // Opciones de botones
 
-    if (userMessage.includes("hola") || userMessage.includes("hi") || userMessage.includes("buenos días")) {
-        responseMessage = responses.saludo;
-        buttons = ["Menu", "Ubicacion", "Horario"];
-    } else if (userMessage.includes("Menu")) {
-        responseMessage = responses.Menu;
-        buttons = ["Comida", "Bebidas", "Postres"];
-    } else if (userMessage.includes("Ubicacion")) {
-        responseMessage = responses.Ubicacion;
-        buttons = ["Ver mapa", "Cómo llegar"];
-    } else if (userMessage.includes("Horario")) {
-        responseMessage = responses.Horario;
-        buttons = ["Ver horario completo", "Preguntar sobre días festivos"];
+    // Mostrar el mensaje del bot
+    let responseMessage = "";
+
+    if (option === "Menú") {
+        responseMessage = responses.menu;
+    } else if (option === "Horario") {
+        responseMessage = responses.horario;
+    } else if (option === "Dirección") {
+        responseMessage = responses.direccion;
     } else {
-        responseMessage = responses.ayuda;
-        buttons = ["Menu", "Ubicacion", "Horario"];
+        responseMessage = "Opción no válida.";
     }
 
-    chatHistory.innerHTML += `<div class="message bot-response">${responseMessage}</div>`; // Mostrar respuesta del bot
+    chatHistory.innerHTML += `<div class="message bot-response">${responseMessage}</div>`;
+    chatHistory.scrollTop = chatHistory.scrollHeight;
+}
 
-    // Crear botones interactivos
+// Mostrar botones principales al cargar
+window.onload = function () {
+    const chatHistory = document.getElementById("chat-history");
+
+    // Botones principales
     const buttonsContainer = document.createElement("div");
-    buttons.forEach(option => {
+    buttonsContainer.classList.add("buttons-container");
+
+    const options = ["Menú", "Horario", "Dirección"];
+    options.forEach(option => {
         const button = document.createElement("button");
         button.innerText = option;
         button.classList.add("response-button");
         buttonsContainer.appendChild(button);
 
-        // Añadir evento al hacer clic en los botones
+        // Añadir evento al hacer clic
         button.addEventListener("click", () => {
-            showResponse(option); // Responder según opción seleccionada
+            showResponse(option);
         });
     });
 
     chatHistory.appendChild(buttonsContainer);
-    chatHistory.scrollTop = chatHistory.scrollHeight; // Desplazarse al final del chat
-}
-
-// Evento para enviar el mensaje
-document.getElementById("send-btn").addEventListener("click", () => {
-    const userInput = document.getElementById("user-input").value.trim();
-    if (userInput) {
-        showResponse(userInput);
-        document.getElementById("user-input").value = ""; // Limpiar campo de entrada
-    }
-});
+};
