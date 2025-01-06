@@ -1,8 +1,8 @@
  /* Contenedor principal */
     .accordion-container {
-            width: 100%;
-            max-width: 850px;
-            margin: 10px;
+            width: 90%;
+            max-width: 750px;
+            margin: 5px;
             border: 0px solid #ddd;
             border-radius: 20px;
             overflow: hidden;
