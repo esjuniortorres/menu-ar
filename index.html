@@ -5,11 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <title>Menú AR - Restaurante Gourmet</title>
+    <link rel="stylesheet" href="tarjetas.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700;800&display=swap" rel="stylesheet">
-     <style>    
-         button {
-        width: 80%; /* Botones adaptativos */
+     <style>
+        @media (max-width: 768px) {
+    body {
+        padding: 10px;
     }
+    button {
+        width: 100%; /* Botones adaptativos */
+    }
+}
+        
         body {
             font-family: 'Poppins', sans-serif; 
             font-weight: 800;
@@ -150,7 +157,7 @@
         <!-- Botones para seleccionar platos -->
        <div class="menu">
        <button onclick="mostrarModelo('platoensalada.glb')">Entrada - Parrilla para Dos Personas</button>
-        <button onclick="mostrarModelo('20_12_2024.glb')">Plato Fuerte - HAMBURGUESAS</button>
+        <button onclick="mostrarModelo('platoensaladaCOMPRIMIDO.glb')">Plato Fuerte - HAMBURGUESAS</button>
         <button onclick="mostrarModelo('19_12_2024.glb')">Postre - HELADO</button>
 
         <!-- Visor AR -->
@@ -162,10 +169,190 @@
                       ar>
         </model-viewer>
     </div>
-       <p>Presiona el icono <img src="icono.png" style="width:25px; height:25px;"> para mejorar la Experiencia</p>
+        <p>Presiona el icono <img src="icono.png" style="width:25px; height:25px;"> para mejorar la Experiencia</p>
         <hr>
    </center> <!--termina de centrar el menu-->
- <!-- Sección de Chatbot -->
+
+
+   <!--inicia las tarjetas-->
+<center>
+    <p style="font-size:50px; font-weight:500;">🍱 MENÚ</p>
+   <!-- Contenedor principal -->
+ <!-- ACORDEON PIZZAS -->
+<div class="accordion-container">
+    <div class="accordion-header">🥘 ENTRADAS</div>
+        <div class="accordion-content">
+            <div class="menu-container">
+                <div class="menu-card">
+                    <img src="logo1.png" alt="Logo del Restaurante">
+                    <p class="dish-name divnombreplato">Pizza Margarita</p>
+                    <p class="description">Tomate fresco, albahaca, queso mozzarella.</p>
+                    <p class="price">$10.99</p>
+                </div>
+                <div class="menu-card">
+                    <img src="logo2.png" alt="Logo del Restaurante">
+                    <p class="dish-name divnombreplato">Hamburguesa Clásica</p>
+                    <p class="description">Carne de res, queso cheddar, lechuga, tomate.</p>
+                    <p class="price">$8.99</p>
+                </div>
+                <div class="menu-card">
+                    <img src="logo3.png" alt="Logo del Restaurante">
+                    <p class="dish-name divnombreplato">Ensalada César</p>
+                    <p class="description">Lechuga romana, crutones, queso parmesano.</p>
+                    <p class="price">$7.49</p>
+                </div>
+                <div class="menu-card">
+                    <img src="logo4.png" alt="Logo del Restaurante">
+                    <p class="dish-name divnombreplato">Tacos de Pollo</p>
+                    <p class="description">Tortilla, pollo, guacamole, salsa especial.</p>
+                    <p class="price">$9.99</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ACORDEON PLATOS -->
+<div class="accordion-container">
+    <div class="accordion-header">🍛 PLATOS</div>
+        <div class="accordion-content">
+            <div class="menu-container">
+                <div class="menu-card">
+                    <img src="logo1.png" alt="Logo del Restaurante">
+                    <p class="dish-name divnombreplato">Pizza Margarita</p>
+                    <p class="description">Tomate fresco, albahaca, queso mozzarella.</p>
+                    <p class="price">$10.99</p>
+                </div>
+                <div class="menu-card">
+                    <img src="logo2.png" alt="Logo del Restaurante">
+                    <p class="dish-name divnombreplato">Hamburguesa Clásica</p>
+                    <p class="description">Carne de res, queso cheddar, lechuga, tomate.</p>
+                    <p class="price">$8.99</p>
+                </div>
+                <div class="menu-card">
+                    <img src="logo3.png" alt="Logo del Restaurante">
+                    <p class="dish-name divnombreplato">Ensalada César</p>
+                    <p class="description">Lechuga romana, crutones, queso parmesano.</p>
+                    <p class="price">$7.49</p>
+                </div>
+                <div class="menu-card">
+                    <img src="logo4.png" alt="Logo del Restaurante">
+                    <p class="dish-name divnombreplato">Tacos de Pollo</p>
+                    <p class="description">Tortilla, pollo, guacamole, salsa especial.</p>
+                    <p class="price">$9.99</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ACORDEON PIZZAS -->
+<div class="accordion-container">
+    <div class="accordion-header">🍕 PIZZAS</div>
+        <div class="accordion-content">
+            <div class="menu-container">
+                <div class="menu-card">
+                    <img src="logo1.png" alt="Logo del Restaurante">
+                    <p class="dish-name divnombreplato">Pizza Margarita</p>
+                    <p class="description">Tomate fresco, albahaca, queso mozzarella.</p>
+                    <p class="price">$10.99</p>
+                </div>
+                <div class="menu-card">
+                    <img src="logo2.png" alt="Logo del Restaurante">
+                    <p class="dish-name divnombreplato">Hamburguesa Clásica</p>
+                    <p class="description">Carne de res, queso cheddar, lechuga, tomate.</p>
+                    <p class="price">$8.99</p>
+                </div>
+                <div class="menu-card">
+                    <img src="logo3.png" alt="Logo del Restaurante">
+                    <p class="dish-name divnombreplato">Ensalada César</p>
+                    <p class="description">Lechuga romana, crutones, queso parmesano.</p>
+                    <p class="price">$7.49</p>
+                </div>
+                <div class="menu-card">
+                    <img src="logo4.png" alt="Logo del Restaurante">
+                    <p class="dish-name divnombreplato">Tacos de Pollo</p>
+                    <p class="description">Tortilla, pollo, guacamole, salsa especial.</p>
+                    <p class="price">$9.99</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ACORDEON HAMBUEGUESAS -->
+<div class="accordion-container">
+    <div class="accordion-header">🍔 HAMBURGUESAS</div>
+        <div class="accordion-content">
+            <div class="menu-container">
+                <div class="menu-card">
+                    <img src="logo1.png" alt="Logo del Restaurante">
+                    <p class="dish-name divnombreplato">Pizza Margarita</p>
+                    <p class="description">Tomate fresco, albahaca, queso mozzarella.</p>
+                    <p class="price">$10.99</p>
+                </div>
+                <div class="menu-card">
+                    <img src="logo2.png" alt="Logo del Restaurante">
+                    <p class="dish-name divnombreplato">Hamburguesa Clásica</p>
+                    <p class="description">Carne de res, queso cheddar, lechuga, tomate.</p>
+                    <p class="price">$8.99</p>
+                </div>
+                <div class="menu-card">
+                    <img src="logo3.png" alt="Logo del Restaurante">
+                    <p class="dish-name divnombreplato">Ensalada César</p>
+                    <p class="description">Lechuga romana, crutones, queso parmesano.</p>
+                    <p class="price">$7.49</p>
+                </div>
+                <div class="menu-card">
+                    <img src="logo4.png" alt="Logo del Restaurante">
+                    <p class="dish-name divnombreplato">Tacos de Pollo</p>
+                    <p class="description">Tortilla, pollo, guacamole, salsa especial.</p>
+                    <p class="price">$9.99</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ACORDEON POSTRES -->
+<div class="accordion-container">
+    <div class="accordion-header">🍰 POSTRES</div>
+        <div class="accordion-content">
+            <div class="menu-container">
+                <div class="menu-card">
+                    <img src="logo1.png" alt="Logo del Restaurante">
+                    <p class="dish-name divnombreplato">Pizza Margarita</p>
+                    <p class="description">Tomate fresco, albahaca, queso mozzarella.</p>
+                    <p class="price">$10.99</p>
+                </div>
+                <div class="menu-card">
+                    <img src="logo2.png" alt="Logo del Restaurante">
+                    <p class="dish-name divnombreplato">Hamburguesa Clásica</p>
+                    <p class="description">Carne de res, queso cheddar, lechuga, tomate.</p>
+                    <p class="price">$8.99</p>
+                </div>
+                <div class="menu-card">
+                    <img src="logo3.png" alt="Logo del Restaurante">
+                    <p class="dish-name divnombreplato">Ensalada César</p>
+                    <p class="description">Lechuga romana, crutones, queso parmesano.</p>
+                    <p class="price">$7.49</p>
+                </div>
+                <div class="menu-card">
+                    <img src="logo4.png" alt="Logo del Restaurante">
+                    <p class="dish-name divnombreplato">Tacos de Pollo</p>
+                    <p class="description">Tortilla, pollo, guacamole, salsa especial.</p>
+                    <p class="price">$9.99</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</center>
+
+<!--termina las tarjetas-->
+    
+
+
+
+    <!-- Sección de Chatbot -->
     <center>
    <div id="chatbot">
     <div><B>Hola, Alejandrilovers❤️</B></div>
@@ -191,6 +378,17 @@
         function mostrarModelo(url) {
             document.getElementById('visor').setAttribute('src', url);
         }
+    </script>
+    <script>
+        // Seleccionar todos los encabezados de acordeón
+        const accordionHeaders = document.querySelectorAll('.accordion-header');
+
+        accordionHeaders.forEach(header => {
+            header.addEventListener('click', () => {
+                const content = header.nextElementSibling;
+                content.classList.toggle('open');
+            });
+        });
     </script>
      <script src="chatbot.js"></script>
    </body>
