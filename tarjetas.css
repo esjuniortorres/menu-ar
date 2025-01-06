@@ -1,0 +1,99 @@
+ /* Contenedor principal */
+    .accordion-container {
+            width: 100%;
+            max-width: 850px;
+            margin: 10px;
+            border: 0px solid #ddd;
+            border-radius: 20px;
+            overflow: hidden;
+            background: white;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .accordion-header {
+            background-color: #7d6608; /* color de fondo de acordeon antes de pasar el mouse*/
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            font-size: 25px; /*tamaño de texto */
+            text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Ajusta los valores según lo necesites */
+            font-weight: 500;
+            border-bottom:0px solid #ddd;
+            text-align: center;
+        }
+
+        .accordion-header:hover {
+            background-color: #ca6f1e; /* color de fondo de acordeon al  pasar el mouse*/
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.9s ease-out, padding 0.9s ease-out;
+            padding: 0 15px;
+            background-color: #fff;
+        }
+
+        .accordion-content.open {
+            max-height: 1500px; /* Ajusta según el contenido máximo */
+            padding: 15px;
+        }
+
+    .menu-container {
+        display: flex;
+        flex-wrap: wrap; /* Permite que las tarjetas salten a la siguiente línea si no caben */
+        gap: 20px; /* Espacio entre las tarjetas */
+        justify-content: center; /* Centra las tarjetas horizontalmente */
+        padding: 20px;
+        margin: 10px auto;
+        max-width: 1200px; /* Ancho máximo del contenedor */
+    }
+
+    /* Tarjetas */
+    .menu-card {
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        max-width: 250px;
+        width: 100%; /* Ajusta el ancho al contenedor */
+        padding: 10px;
+        text-align: center;
+        border: 1px solid #ddd;
+    }
+
+    /* Imagen dentro de la tarjeta */
+    .menu-card img {
+        width: 60px;
+        height: auto;
+        margin-bottom: 5px;
+        border-radius: 50%;
+    }
+
+    /* Nombre del plato */
+    .menu-card .dish-name {
+        font-size: 20px;
+        font-weight: bold;
+        margin: 10px 0 5px;
+    }
+
+    /* Descripción del plato */
+    .menu-card .description {
+        font-size: 16px;
+        color: #555;
+        font-weight: 400;
+        margin: 5px 0;
+    }
+
+    /* Precio */
+    .menu-card .price {
+        font-size: 18px;
+        font-weight: bold;
+        color: #27ae60;
+        margin-top: 10px;
+    }
+    .divnombreplato
+    {
+        background-color: #7d6608; /* color de fondo de acordeon antes de pasar el mouse*/
+        border-radius: 10px;
+        color: white;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Ajusta los valores según lo necesites */
+    }
