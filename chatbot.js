@@ -11,13 +11,10 @@ function showResponse(option) {
     // Crear el mensaje del bot según la opción seleccionada
     let responseMessage = "";
 
-    if (option === "📱 Ver Menú") {
-        // Abrir el enlace de WhatsApp directamente
-        window.open("https://wa.me/1234567890?text=Hola!%20Quiero%20ver%20el%20menú", "_blank");
-        return;
-    } else if (option === "⏱ Ver Horario") {
+    if (option === "⏱ Ver Horario") {
         responseMessage = responses.horario;
-    } else if (option === "📍 Nuestra Dirección") {
+    }
+    else if (option === "📍 Nuestra Dirección") {
         responseMessage = responses.direccion;
     } else {
         responseMessage = "Opción no válida.";
@@ -52,7 +49,7 @@ function renderButtons(container) {
     buttonsContainer.classList.add("buttons-container");
 
     // Opciones de botones
-    const options = ["📱 Ver Menú", "⏱ Ver Horario", "📍 Nuestra Dirección"];
+    const options = ["⏱ Ver Horario", "📍 Nuestra Dirección"];
     options.forEach(option => {
         const button = document.createElement("button");
         button.innerText = option;
